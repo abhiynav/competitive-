@@ -1,0 +1,33 @@
+class Solution {
+
+
+ public:
+
+
+  ListNode* reverseList(ListNode* head) {
+
+
+//if the head is nullptr, basically there is no linked list 
+//or there is only one node
+
+    if (!head || !head->next){
+      return head;
+    }
+
+
+
+// this is just to store the last node
+    ListNode* newHead = reverseList(head->next);
+
+
+// this is the main logic behind reversing
+    head->next->next = head;
+
+// necessary so that, the first node is pointing to the null ptr
+    head->next = nullptr;
+
+
+// whatever the last node is stored, it will return that, because while reversing we want the last node 
+    return newHead;
+  }
+};
